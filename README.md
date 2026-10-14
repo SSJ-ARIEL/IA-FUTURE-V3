@@ -10,8 +10,8 @@ La consolidación reduce duplicación; no implica que Google haya aprobado el si
 
 ## Publicación
 
-El workflow `.github/workflows/pages.yml` publica la raíz estática y comprueba los 45 avisos, sus destinos y la ausencia de publicidad y analítica. El trabajo usa los permisos mínimos de lectura del repositorio, publicación de Pages e identidad de Actions, y serializa las publicaciones.
+GitHub Pages publica la rama `main` desde la raíz del repositorio, mediante su pipeline heredada (`build_type: legacy`). Los 45 HTML conservan los avisos de traslado y permanecen sin anuncios ni analítica.
 
-El primer despliegue migra Pages desde la publicación heredada por rama a GitHub Actions. Para la reparación identificada en el run `38596638385`, la opción `repair_stalled_deployment` solicita cancelar únicamente `1e146a815c00654d9f12904dc5183ae9bf81c9b5`; no acepta otros IDs ni cancela despliegues nuevos. Utiliza esa opción solo para dicho bloqueo.
+Un despliegue anterior quedó pendiente y bloqueó temporalmente la publicación siguiente. La pipeline heredada completó posteriormente la publicación de los avisos, comprobada contra los archivos del repositorio. Para actualizar esta copia, publica cambios reales en `main` y verifica que el run de Pages termine correctamente.
 
 Después de publicar, comprueba que `https://ssj-ariel.github.io/IA-FUTURE-V3/` muestra el aviso de traslado y coincide con `index.html`, y abre varias rutas anteriores. No regeneres los avisos con los antiguos scripts editoriales.
